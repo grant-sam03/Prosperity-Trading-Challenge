@@ -44,7 +44,7 @@ Round 2 introduced a basket of correlated consumer goods, creating opportunities
   3. **Enhanced Liquidity:** A secondary `MarketMakePB2Strategy` ran in parallel, passively quoting `PICNIC_BASKET2` to capture spread profit while the main pairs strategy awaited a signal.
 - **Post-Competition Insight:** My initial model for the baskets was based on their component prices. While stable, a more advanced regression-based model using `components + ETF premium + random noise` could have improved signal extraction and risk-adjusted returns by better isolating the true mispricing from the noise.
 
-![B1vsB2](research/stat%20arb//b1vsb2.png)
+![B1vsB2](research/stat%20arb//B1vsB2.png)
 
 ### 🍓 The Trios (`JAMS`, `DJEMBES`, `CROISSANTS`)
 - **Approach:** A statistical arbitrage strategy that evolved over the rounds.
@@ -54,6 +54,7 @@ Round 2 introduced a basket of correlated consumer goods, creating opportunities
   - **Reassigning Croissants:** `CROISSANTS` was later given its own "Olivia Follower" strategy in Round 5, similar to `SQUID_INK`, after her predictive trading patterns were identified in that asset as well.
 
 ---
+![JamsvsDjembes](research/stat%20arb//JamsvsDjembes.png)
 
 ## 🌀 Round 3: Options Trading and Delta Management
 
