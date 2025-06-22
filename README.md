@@ -67,6 +67,8 @@ Round 3 introduced `VOLCANIC_ROCK` and its associated options, requiring a deep 
   3.  **Delta Hedging:** I implemented a delta hedging module to neutralize the portfolio's directional exposure by taking offsetting positions in the underlying `VOLCANIC_ROCK`.
 - **Commentary:** Due to position limits, the strategy was sometimes forced to carry unintended directional risk (delta). This exposure turned out to be profitable, though it was a result of luck rather than intention. I submitted this round's code at 6:58 AM after an all-nighter; I was thankful just to have a sound, positive-PnL strategy locked in despite the exhaustion. My delta hedging was also likely quite expensive (in terms of spread costs). Given more time, I would have tried to sort out a smarter way to delta hedge. 
 
+
+![Vol Smile](research/options/vol%20smile.png)
 ---
 
 ## 🌀 Round 4: Macarons, Sunlight, and Cross-Market Arbitrage
