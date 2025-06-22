@@ -1,12 +1,6 @@
-Yes, absolutely. With the benefit of your direct prompts and the context of your final codebase, I can now write a much more accurate and compelling `README.md` file that truly reflects your journey and final strategies.
-
-Here is the revised, high-quality `README.md`:
-
----
-
 # IMC Prosperity Trading Challenge (Solo)
 
-This repository documents my participation in the IMC Prosperity Trading Competition, a five-round algorithmic trading simulation focused on market making, arbitrage, options pricing, and predictive modeling. Competing solo, I developed and refined nine distinct, fully-automated strategies, ultimately placing in the **Top 10 in Canada** out of over 19,000 teams globally.
+This repository documents my participation in the IMC Prosperity Trading Competition, a five-round algorithmic trading simulation focused on market making, arbitrage, options pricing, and predictive modeling. Competing solo, I developed and refined nine distinct, fully-automated strategies, ultimately placing in the **Top 10 in Canada** and ~300th overall out of over 19,000 teams globally, while competing solo against teams of 4.
 
 This document serves as a retrospective on my strategic evolution, detailing how each algorithm was conceived, tested, and adapted across the rounds to achieve its final, profitable state.
 
@@ -20,7 +14,7 @@ Round 1 served as a crucial proving ground for developing foundational, low-risk
   1. **Passive Quoting:** I placed limit buy orders at 9994 and sell orders at 10006, creating a consistent 12-point spread that balanced execution frequency with per-trade profit.
   2. **Inventory Skewing:** To manage risk, quote sizes were dynamically adjusted based on current holdings—reducing buy sizes when long and sell sizes when short.
   3. **Aggressive Taking:** The algorithm would instantly hit/lift any orders that appeared mispriced relative to 10,000.
-- **Outcome:** This strategy was profitable and exceptionally stable from day one. Its robust, non-predictive logic required no modifications and ran unchanged through all five rounds.
+- **Outcome:** This strategy was profitable and stable from day one. Its robust, non-predictive logic required no modifications and ran unchanged through all five rounds.
 
 ### 🌿 Kelp: Top-of-Book Liquidity
 - **Approach:** Market making with full order book visibility, exploiting the ability to see all bids and asks before placing an order.
@@ -50,10 +44,12 @@ Round 2 introduced a basket of correlated consumer goods, creating opportunities
   3. **Enhanced Liquidity:** A secondary `MarketMakePB2Strategy` ran in parallel, passively quoting `PICNIC_BASKET2` to capture spread profit while the main pairs strategy awaited a signal.
 - **Post-Competition Insight:** My initial model for the baskets was based on their component prices. While stable, a more advanced regression-based model using `components + ETF premium + random noise` could have improved signal extraction and risk-adjusted returns by better isolating the true mispricing from the noise.
 
+![B1 vs B2](research/stat arb/B1vsB2.png)
+
 ### 🍓 The Trios (`JAMS`, `DJEMBES`, `CROISSANTS`)
 - **Approach:** A statistical arbitrage strategy that evolved over the rounds.
 - **Implementation & Evolution:**
-  - **Initial Model:** I started by modeling all three assets together. However, analysis showed that `CROISSANTS` behaved differently, adding noise to the arbitrage signal.
+  - **Initial Model:** I started by modeling all three assets together. However, during the 5th round I was able to use Olivia's signals to trade `CROISSANTS` and so removed it from the Trios strategy (I guess I should have renamed it Duos).
   - **Final Model:** I removed `CROISSANTS` from the basket and focused the `TriosStrategy` on a highly effective two-asset arbitrage between `JAMS` and `DJEMBES`. This refined model normalized their prices to identify statistical mispricings with greater accuracy.
   - **Reassigning Croissants:** `CROISSANTS` was later given its own "Olivia Follower" strategy in Round 5, similar to `SQUID_INK`, after her predictive trading patterns were identified in that asset as well.
 
@@ -68,7 +64,7 @@ Round 3 introduced `VOLCANIC_ROCK` and its associated options, requiring a deep 
   1.  **Volatility Modeling:** I plotted the implied volatility smile across all option strikes and fitted a polynomial curve to it. This curve generated the model's "fair price" for each option using the Black-Scholes formula.
   2.  **Strategy Pivot:** My initial attempts at pure IV scalping proved less effective than a more direct approach. The final strategy pivoted to directly trading the difference between the model's fair price and the market price.
   3.  **Delta Hedging:** I implemented a delta hedging module to neutralize the portfolio's directional exposure by taking offsetting positions in the underlying `VOLCANIC_ROCK`.
-- **Commentary:** Due to position limits, the strategy was sometimes forced to carry unintended directional risk (delta). This exposure turned out to be profitable, though it was a result of luck rather than intention. I submitted this round's code at 6:58 AM after an all-nighter; I was thankful just to have a sound, positive-PnL strategy locked in despite the exhaustion.
+- **Commentary:** Due to position limits, the strategy was sometimes forced to carry unintended directional risk (delta). This exposure turned out to be profitable, though it was a result of luck rather than intention. I submitted this round's code at 6:58 AM after an all-nighter; I was thankful just to have a sound, positive-PnL strategy locked in despite the exhaustion. My delta hedging was also likely quite expensive (in terms of spread costs). Given more time, I would have tried to sort out a smarter way to delta hedge. 
 
 ---
 
@@ -79,7 +75,7 @@ Round 4 introduced `MAGNIFICENT_MACARONS` and a second exchange, complete with t
 - **Approach:** A hybrid strategy combining a primary, signal-based model with a secondary, risk-free arbitrage loop.
 - **Implementation:**
   1.  **Signal Trading (Primary):** The core of the strategy was an event-driven state machine tied to the `sunlightIndex`. This index was a powerful leading indicator: a sharp drop consistently preceded a price spike in macarons. The strategy would automatically go long on this signal and, under specific conditions, flip short to capture the subsequent crash.
-  2.  **Cross-Market Arbitrage (Secondary):** I identified a persistent inefficiency where a market participant on the foreign exchange consistently sold Macarons at a price lower than what I could sell them for on the main exchange, even after accounting for all fees. My algorithm executed this near risk-free arbitrage loop continuously, providing a stable profit stream while the main logic awaited a sunlight signal.
+  2.  **Cross-Market Arbitrage (Secondary):** I identified a persistent inefficiency where a market participant on the foreign exchange consistently sold Macarons at a price lower than what I could sell them for on the main exchange, even after accounting for all fees. My algorithm executed this near risk-free arbitrage loop continuously, providing a stable profit stream while the main logic awaited a sunlight signal. By consistently staying short through the main exchange, and using the foreign exchange to close my positions at a fair price, I was able to avoid paying any storage costs. Overall, I was quite happy with my approach to this asset.
 
 ---
 
