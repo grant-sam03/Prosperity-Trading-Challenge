@@ -30,6 +30,7 @@ Round 1 served as a crucial proving ground for developing foundational, low-risk
   - **Round 5 (Final Version):** With the introduction of trader-level data, I discovered that a trader named "Olivia" consistently traded just before significant price moves. I completely rewrote the strategy into a **behavioral "follower" model**, abandoning the moving averages entirely. The new logic was simple: buy immediately after Olivia buys, and sell immediately after she sells.
 - **Outcome:** The shift from a quantitative model to a behavioral signal in Round 5 transformed `SQUID_INK` from a negligible performer into a highly profitable asset.
 
+![Olivia Signals](research/follower/squink.png)
 ---
 
 ## 🌀 Round 2: Synthetic Baskets and Statistical Arbitrage
@@ -55,6 +56,7 @@ Round 2 introduced a basket of correlated consumer goods, creating opportunities
 
 ---
 ![JamsvsDjembes](research/stat%20arb//JamsvsDjembes.png)
+![Olivia Signals](research/follower/croissants.png)
 
 ## 🌀 Round 3: Options Trading and Delta Management
 
@@ -80,6 +82,10 @@ Round 4 introduced `MAGNIFICENT_MACARONS` and a second exchange, complete with t
   1.  **Signal Trading (Primary):** The core of the strategy was an event-driven state machine tied to the `sunlightIndex`. This index was a powerful leading indicator: a sharp drop consistently preceded a price spike in macarons. The strategy would automatically go long on this signal and, under specific conditions, flip short to capture the subsequent crash.
   2.  **Cross-Market Arbitrage (Secondary):** I identified a persistent inefficiency where a market participant on the foreign exchange consistently sold Macarons at a price lower than what I could sell them for on the main exchange, even after accounting for all fees. My algorithm executed this near risk-free arbitrage loop continuously, providing a stable profit stream while the main logic awaited a sunlight signal. By consistently staying short through the main exchange, and using the foreign exchange to close my positions at a fair price, I was able to avoid paying any storage costs. Overall, I was quite happy with my approach to this asset.
 
+  ![Arbitrage](research/arbitrage/arb.png)
+  ![Arbitrage](research/arbitrage/arb%20example.png)
+  ![Arbitrage](research/arbitrage/arb%20spread.png)
+  ![Arbitrage](research/arbitrage/sunlight%20index.png)
 ---
 
 ## 🌀 Round 5: Trader Signal Exploitation
