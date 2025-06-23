@@ -2,7 +2,7 @@
 
 This repository documents my participation in the IMC Prosperity Trading Competition, a five-round algorithmic trading simulation focused on market making, arbitrage, options pricing, and predictive modeling. Competing solo, I developed and refined nine distinct, fully-automated strategies, ultimately placing in the **Top 10 in Canada** and ~300th overall out of over 19,000 teams globally, while competing solo against teams of 4.
 
-This document serves as a retrospective on my strategic evolution, detailing how each algorithm was conceived, tested, and adapted across the rounds to achieve its final, profitable state.
+This document serves as a retrospective on my strategic evolution, detailing how each algorithm was conceived, tested, and adapted across the rounds to achieve its final, profitable state. Note that not all of my research notebooks have made it into this repo, since some are extremely messy :).
 
 ## 🌀 Round 1: Core Market Making and Baseline Strategies
 
